@@ -1,16 +1,16 @@
  #!/bin/python
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
-import urllib, json, sys, mariadb
+import urllib, json, sys
 
 from path_parse import path_parse
-from final_compose import final_compose
+from page_compose import page_compose
 
 class Website(BaseHTTPRequestHandler):
 	def do_GET(self):
-		action, compose, data = path_parse(self.path)
-		err, title, content = compose(data)
-		page = final_compose(content, title)
-		self.send_response(200)
+		action, content = path_parse(self.path)
+		content.compose()
+		page = page_compose(content)
+		self.send_response(content.err)
 		self.send_header("Content-type", "text/html")
 		self.end_headers()
 		self.wfile.write(page.encode("utf-8"))

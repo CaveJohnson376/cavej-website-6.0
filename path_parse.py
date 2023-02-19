@@ -1,17 +1,13 @@
-from mainpage_compose import mainpage_compose
-
-def err_placeholder_compose(data = [''], userdata = "uh what"):
-	return ("critical error","something went horribly wrong. i cannot find what you are looking for!")
+import content as Composers
 
 def path_parse(path = "/"):
 	action = "return_page"
-	compose = err_placeholder_compose
-	post_path = ['']
+	content_composer = Composers.ErrorPageContent(path, 200)
 	match path[1:].split("/"):
-		case ['' | 'home' | 'main', *the_rest]:
-			compose = mainpage_compose
-			post_path = the_rest
+		case ['' | 'home' | 'main']:
+			content_composer = Composers.MainPageContent(path)
 		case other:
-			post_path = other
+			action = "error"
+			content_composer = Composers.ErrorPageContent(path, 404)
 	
-	return (action, compose, post_path)
+	return (action, content_composer)
