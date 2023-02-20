@@ -45,6 +45,18 @@ class MainPageContent(BaseContent):
 		# 	- $imagelink
 		# 	- $authorname
 		# 	- $timestamp
+		article_template = Template(open('mainpage_templates/article_preview.html', 'r').read())
+		articles_list = self.database.get_article_list(10, 0, "date")[::-1]
+		articles_str = ''
+		for article in articles_list:
+			articles_str += article_template.substitute(
+					title = article["title"],
+					authorname = article["author"],
+					imglink = article["imgurl"],
+					timestamp = article["timestamp"],
+					desc = article["description"]
+			)
+		
 		# tags for creation preview:
 		# 	- $title
 		# 	- $shortdesc
@@ -54,6 +66,6 @@ class MainPageContent(BaseContent):
 		# 	- $rating
 		
 		# TODO: add database integration
-		self.content = main.substitute(pages = "none yet", quotes = "none yet", articles = "none yet", creations = "none yet")
+		self.content = main.substitute(pages = "none yet", quotes = "none yet", articles = articles_str, creations = "none yet")
 		self.is_composed = True
 	pass

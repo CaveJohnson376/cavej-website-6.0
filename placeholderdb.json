@@ -1,0 +1,30 @@
+{
+	"articles":[
+		{
+			"id":0,
+			"title":"sample title 1",
+			"author":"sample author",
+			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
+			"description":"sample description",
+			"timestamp":1672531200,
+			"content":"sample content (instert lorem ipsum here)"
+		},{
+			"id":1,
+			"title":"sample title 2",
+			"author":"sample author",
+			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
+			"description":"sample description",
+			"timestamp":1672531300,
+			"content":"sample content (instert lorem ipsum here)"
+		},{
+			"id":2,
+			"title":"sample title 3",
+			"author":"sample author",
+			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
+			"description":"sample description",
+			"timestamp":1672531400,
+			"content":"sample content (instert lorem ipsum here)"
+		}
+	]
+}
+			
