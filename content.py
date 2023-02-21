@@ -15,6 +15,7 @@ class BaseContent:
 		# placeholder page is pre-composed; no compose required; set "is_composed" immediately.
 		self.is_composed = True
 
+# for debugging purposes
 class ErrorPageContent(BaseContent):
 	ppath = []
 	def __init__(self, path, parsedpath, err = 400):
@@ -73,6 +74,8 @@ class MainPageContent(BaseContent):
 		self.is_composed = True
 	pass
 
+# this one converts article dict into actual page content
+# TODO: add next read recommendations
 class ArticlePageContent(BaseContent):
 	def compose(self, userdata = 'uh what'):
 		article_id = int(self.request_path[9:])
@@ -87,8 +90,28 @@ class ArticlePageContent(BaseContent):
 				content = article_data['content'].replace('\n', '<br>')
 		)
 		self.is_composed = True
-		
+
 class ArticleListContent(BaseContent):
+	def compose(self, userdata = 'uh what'):
+		# TODO: pages, sorting and filtering
+		article_list_template = Template(open('templates/article_list.html', 'r').read())
+		article_template = Template(open('templates/article_preview.html', 'r').read())
+		articles_list = self.database.get_article_list(10, 0, "date")
+		articles_str = ''
+		for article in articles_list:
+			articles_str += article_template.substitute(
+					articleid = article["id"],
+					title = article["title"],
+					authorname = article["author"],
+					imglink = article["imgurl"],
+					timestamp = article["timestamp"],
+					desc = article["description"]
+			)
+		
+		self.title = 'Articles'
+		self.content = article_list_template.substitute(
+				articles = articles_str
+		)
 	pass
 		
 		

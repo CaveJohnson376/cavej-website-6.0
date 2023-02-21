@@ -8,6 +8,7 @@ currently includes:
 + main page - shows up 10 recent articles, yet to show other stuff.
 
 TODO:
+- language system
 - normal page system. those good ol' pages without specific author and publication time, but title and content.
 - creation/portfolio page system. somewhat like articles, but for art and stuff i do.
 - quotebook page system. finally, worthy quotebook.
