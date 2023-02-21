@@ -7,7 +7,7 @@
 			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
 			"description":"sample description",
 			"timestamp":1672531200,
-			"content":"sample content (instert lorem ipsum here)"
+			"content":"sample content\n\n(insert lorem ipsum here)"
 		},{
 			"id":1,
 			"title":"sample title 2",
@@ -15,7 +15,7 @@
 			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
 			"description":"sample description",
 			"timestamp":1672531300,
-			"content":"sample content (instert lorem ipsum here)"
+			"content":"sample content\n\n(insert lorem ipsum here)"
 		},{
 			"id":2,
 			"title":"sample title 3",
@@ -23,7 +23,7 @@
 			"imgurl":"https://media.discordapp.net/attachments/257057492851228674/1076651392908935218/image.png",
 			"description":"sample description",
 			"timestamp":1672531400,
-			"content":"sample content (instert lorem ipsum here)"
+			"content":"sample content\n\n(insert lorem ipsum here)"
 		}
 	]
 }

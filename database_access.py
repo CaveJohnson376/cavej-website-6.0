@@ -21,10 +21,14 @@ class DatabaseAccess:
 		f = open('placeholderdb.json', 'r')
 		self.tempdata = json.loads(f.read())
 	
+	
+	# articles
+	#====================================
 	def get_article_list(self, amount, startwith = 0, sort = "arbitrary"):
 		# sort types: arbitrary, title, date, (later on) author_name/ID
 
-		articles = self.tempdata['articles']
+		articles = self.tempdata['articles'] #TODO: oh shitfuck this is going to be nightmare to replace with SQL
+		
 		match sort:
 			case 'arbitrary':
 				articles = sorted(articles, key=lambda d: d['id'])
@@ -38,7 +42,9 @@ class DatabaseAccess:
 			return articles[startwith:]
 	
 	def get_article_by_id(self, art_id):
-		articles = self.tempdata['articles']
+	
+		articles = self.tempdata['articles'] #god dammit i need to stop relying on this
+		
 		filtered_articles = list(filter(lambda article: article['id'] == art_id, articles))
 		article = {}
 		if len(filtered_articles) < 1:
