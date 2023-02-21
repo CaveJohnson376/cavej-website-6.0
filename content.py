@@ -31,7 +31,7 @@ class ErrorPageContent(BaseContent):
 class MainPageContent(BaseContent):
 	def compose(self, userdata = 'uh what'): # currently a stub. to be expanded upon.
 		self.title = "Main Page"
-		main = Template(open('mainpage_templates/main.html', 'r').read())
+		main = Template(open('templates/mainpage.html', 'r').read())
 		# TODO: add $pages, $articles, $creations and $quotes tags
 	
 		# TODO: add page button, quote block, article and creation preview templates, as well as tags for them
@@ -47,7 +47,7 @@ class MainPageContent(BaseContent):
 		# 	- $imagelink
 		# 	- $authorname
 		# 	- $timestamp
-		article_template = Template(open('mainpage_templates/article_preview.html', 'r').read())
+		article_template = Template(open('templates/article_preview.html', 'r').read())
 		articles_list = self.database.get_article_list(10, 0, "date")[::-1]
 		articles_str = ''
 		for article in articles_list:
@@ -77,7 +77,7 @@ class ArticlePageContent(BaseContent):
 	def compose(self, userdata = 'uh what'):
 		article_id = int(self.request_path[9:])
 		article_data = self.database.get_article_by_id(article_id)
-		article_template = Template(open('templates/article_template.html', 'r').read())
+		article_template = Template(open('templates/article.html', 'r').read())
 		self.title = 'Article: ' + article_data['title']
 		self.content = article_template.substitute(
 				imglink = article_data['imgurl'],
@@ -88,7 +88,8 @@ class ArticlePageContent(BaseContent):
 		)
 		self.is_composed = True
 		
-		
+class ArticleListContent(BaseContent):
+	pass
 		
 		
 		
